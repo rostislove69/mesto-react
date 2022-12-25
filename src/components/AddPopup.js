@@ -3,6 +3,7 @@ import PopupWithForm from "./PopupWithForm.js";
 function AddPopup(props) {
   return (
     <PopupWithForm
+      buttonText="Создать"
       name="add"
       title="Новое место"
       isOpen={props.isOpen}
@@ -34,9 +35,6 @@ function AddPopup(props) {
         />
         <span className="popup__input-error pictures-link-input-error"></span>
       </label>
-      <button className="popup__button-submit button-submit-add" type="submit">
-        Создать
-      </button>
     </PopupWithForm>
   );
 }

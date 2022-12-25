@@ -3,6 +3,7 @@ import PopupWithForm from "./PopupWithForm.js";
 function EditProfilePopup(props) {
   return (
     <PopupWithForm
+      buttonText="Сохранить"
       name="edit"
       title="Редактировать профиль"
       isOpen={props.isOpen}
@@ -34,9 +35,6 @@ function EditProfilePopup(props) {
         />
         <span className="popup__input-error user-about-input-error"></span>
       </label>
-      <button className="popup__button-submit button-submit-edit" type="submit">
-        Сохранить
-      </button>
     </PopupWithForm>
   );
 }

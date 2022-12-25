@@ -1,15 +1,15 @@
-import React from "react";
+import {useState, useEffect} from "react";
 import Avatar from "../images/avatar.jpg";
 import api from "../utils/Api.js";
 import Card from "./Card.js";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState("Жак-Ив Кусто");
-  const [userDescription, setUserDescription] = React.useState("Исследователь океанов");
-  const [userAvatar, setUserAvatar] = React.useState(Avatar);
-  const [cards, setCards] = React.useState([]);
+  const [userName, setUserName] = useState("Жак-Ив Кусто");
+  const [userDescription, setUserDescription] = useState("Исследователь океанов");
+  const [userAvatar, setUserAvatar] = useState(Avatar);
+  const [cards, setCards] = useState([]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     api
       .getUserInformation()
       .then((res) => {
@@ -68,6 +68,7 @@ function Main(props) {
         <ul className="elements__grid">
           {cards.map((card) => (
             <Card 
+              key={card._id}
               card={card}
               onCardClick={props.onCardClick}
               name={card.name} 

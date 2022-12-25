@@ -3,6 +3,7 @@ import PopupWithForm from "./PopupWithForm.js";
 function EditAvatarPopup(props) {
   return (
     <PopupWithForm
+    buttonText="Сохранить"
       name="edit-avatar"
       title="Обновить аватар"
       isOpen={props.isOpen}
@@ -20,9 +21,6 @@ function EditAvatarPopup(props) {
         />
         <span className="popup__input-error avatar-link-input-error"></span>
       </label>
-      <button className="popup__button-submit button-submit-edit" type="submit">
-        Сохранить
-      </button>
     </PopupWithForm>
   );
 }
