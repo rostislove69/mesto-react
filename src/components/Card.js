@@ -1,7 +1,22 @@
+import { useContext } from "react";
+import { CurrentUserContext } from "../contexts/CurrentUserContext.js";
+
 function Card(props) {
+  const currentUser = useContext(CurrentUserContext);
+  const isOwn = props.card.owner._id === currentUser._id;
+  const isLiked = props.card.likes.some((i) => i._id === currentUser._id);
+  const cardLikeButtonClassName = `elements__like-button ${
+    isLiked && "elements__like-button_active"
+  }`;
+
   return (
     <li className="elements__element">
-      <button className="elements__delete-button" type="button"></button>
+      {isOwn && (
+        <button
+          className="elements__delete-button"
+          onClick={() => props.onCardDelete(props.card)}
+        />
+      )}
       <img
         className="elements__image"
         onClick={() => props.onCardClick(props.card)}
@@ -11,7 +26,11 @@ function Card(props) {
       <div className="elements__block">
         <h2 className="elements__name">{props.name}</h2>
         <div className="elements__like-block">
-          <button className="elements__like-button" type="button"></button>
+          <button
+            className={cardLikeButtonClassName}
+            type="button"
+            onClick={() => props.onCardLike(props.card)}
+          ></button>
           <p className="elements__like-counter">{props.likes}</p>
         </div>
       </div>

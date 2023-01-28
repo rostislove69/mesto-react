@@ -10,6 +10,7 @@ function PopupWithForm(props) {
           className={`popup__form popup__form_type_${props.name}`}
           name="form"
           noValidate
+          onSubmit={props.onSubmit}
         >
           <button
             onClick={props.isClose}

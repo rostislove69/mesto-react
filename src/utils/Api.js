@@ -34,10 +34,10 @@ class Api {
   
   updateUserInfo(data){
     return fetch(`${this._url}/users/me`, {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
         authorization: this._token,
-        'Content-Type' : 'application/json'
+        "Content-Type" : "application/json"
       },
       body: JSON.stringify({
         name: data.name,
@@ -73,28 +73,6 @@ class Api {
     .then((res) => this._checkResponse(res));
   }
 
-  addLike(id){
-    return fetch(`${this._url}/cards/${id}/likes`,{
-      method: "PUT",
-      headers: {
-        authorization: this._token,
-        "Content-Type" : "application/json"
-      }
-    })
-    .then((res) => this._checkResponse(res));
-  }
-
-  deleteLike(id){
-    return fetch(`${this._url}/cards/${id}/likes`,{
-      method: "DELETE",
-      headers: {
-        authorization: this._token,
-        "Content-Type" : "application/json"
-      }
-    })
-    .then((res) => this._checkResponse(res));
-  }
-
   updateAvatar(data){
     return fetch(`${this._url}/users/me/avatar`,{
       method: "PATCH",
@@ -105,6 +83,27 @@ class Api {
       body: JSON.stringify({
         avatar: data.link
       })
+    })
+    .then((res) => this._checkResponse(res));
+  }
+
+  changeLikeCardStatus(id, isLiked){
+    if(isLiked) {
+      return fetch(`${this._url}/cards/${id}/likes`, {
+        method: "PUT",
+        headers: {
+          authorization: this._token,
+          "Content-Type" : "application/json"
+        }
+      })
+      .then((res) => this._checkResponse(res));
+    }
+    return fetch(`${this._url}/cards/${id}/likes`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._token,
+        "Content-Type" : "application/json"
+      },
     })
     .then((res) => this._checkResponse(res));
   }
