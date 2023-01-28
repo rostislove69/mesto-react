@@ -12,7 +12,7 @@ function EditProfilePopup(props) {
     setName(currentUser.name);
     setAbout(currentUser.about);
     setButtonText("Сохранить");
-  }, [currentUser]);
+  }, [currentUser, props.isOpen]);
 
   function handleChangeName(evt){
     setName(evt.target.value);
@@ -50,7 +50,7 @@ function EditProfilePopup(props) {
           required
           minLength="2"
           maxLength="40"
-          value={name}
+          value={name || ""}
         />
         <span className="popup__input-error user-name-input-error"></span>
       </label>
@@ -65,7 +65,7 @@ function EditProfilePopup(props) {
           required
           minLength="2"
           maxLength="200"
-          value={about}
+          value={about || ""}
         />
         <span className="popup__input-error user-about-input-error"></span>
       </label>
