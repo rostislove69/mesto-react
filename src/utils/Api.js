@@ -1,7 +1,9 @@
+import {apiCfg} from "./constants.js";
+
 class Api {
-  constructor(options){
-    this._url = options.url;
-    this._token = options.token;
+  constructor({url, token}){
+    this._url = url;
+    this._token = token;
   }
 
   _checkResponse(res){
@@ -109,9 +111,6 @@ class Api {
   }
 }
 
-const api = new Api({
-  url: "https://nomoreparties.co/v1/cohort-54",
-  token: "496bbdcf-3622-4772-837e-cc024aa429a3"
-});
+const api = new Api(apiCfg);
 
 export default api;
